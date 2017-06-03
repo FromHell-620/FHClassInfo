@@ -128,8 +128,7 @@
 				TargetAttributes = {
 					C9E569C81EE2F66E00029AAB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DHF573YC2L;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -293,8 +292,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DHF573YC2L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FHClassInfoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GodL.FHClassInfoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -305,8 +305,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DHF573YC2L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FHClassInfoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GodL.FHClassInfoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -332,6 +333,7 @@
 				C9E569E21EE2F66E00029AAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

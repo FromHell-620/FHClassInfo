@@ -9,6 +9,23 @@
 #import "FHClassInfo.h"
 #import <objc/runtime.h>
 
+@implementation FHPropertyInfo
+
+- (instancetype)initWithProperty:(objc_property_t)property {
+    if (property == NULL) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"this method should receive a property" userInfo:nil];
+        return nil;
+    }
+    self = [super init];
+    if (self) {
+        _objc_property = property;
+        _name = [NSString stringWithUTF8String:property_getName(property)];
+    }
+    return self;
+}
+
+@end
+
 @implementation FHClassInfo
 
 - (instancetype)init {

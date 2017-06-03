@@ -11,6 +11,28 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger,FHPropertyEncodingType) {
+    FHPropertyEncodingTypeUnknow,
+    FHPropertyEncodingTypeBool,
+    FHPropertyEncodingTypeInt,
+    FHPropertyEncodingTypeLong,
+    FHPropertyEncodingTypeFloat,
+    FHPropertyEncodingTypeDouble,
+    FHPropertyEncodingTypeObject
+};
+
+typedef NS_ENUM(NSInteger,FHPropertyObjectEncodingType) {
+    FHPropertyObjectEncodingTypeNonsupport = 0xFF,
+    FHPropertyObjectEncodingTypeNSString,
+    FHPropertyObjectEncodingTypeNSNumber,
+    FHPropertyObjectEncodingTypeNSData,
+    FHPropertyObjectEncodingTypeNSDate,
+    FHPropertyObjectEncodingTypeNSArray,
+    FHPropertyObjectEncodingTypeNSDictionary,
+    FHPropertyObjectEncodingTypeNSURL,
+    FHPropertyObjectEncodingTypeUIImage
+};
+
 @interface FHPropertyInfo : NSObject
 
 @property (nonatomic,assign,readonly) objc_property_t objc_property;
@@ -19,9 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy,readonly) NSString *type;
 
+@property (nonatomic,assign,readonly) FHPropertyEncodingType typeEncoding;
+
+@property (nonatomic,assign,readonly) FHPropertyObjectEncodingType objectTypeEncoding;
+
 @property (nonatomic,assign,readonly) SEL getter;
 
 @property (nonatomic,assign,readonly) SEL setter;
+
+- (instancetype)initWithProperty:(objc_property_t)propertyNS_DESIGNATED_INITIALIZER;
 
 @end
 
