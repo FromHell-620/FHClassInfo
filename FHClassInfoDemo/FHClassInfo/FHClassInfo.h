@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger,FHPropertyEncodingType) {
     FHPropertyEncodingTypeLong,
     FHPropertyEncodingTypeFloat,
     FHPropertyEncodingTypeDouble,
+    FHPropertyEncodingTypeCString,
     FHPropertyEncodingTypeObject
 };
 
@@ -41,6 +42,8 @@ typedef NS_ENUM(NSInteger,FHPropertyObjectEncodingType) {
 
 @property (nonatomic,copy,readonly) NSString *type;
 
+@property (nonatomic,assign,readonly) BOOL isEncodingTypeObject;
+
 @property (nonatomic,assign,readonly) FHPropertyEncodingType typeEncoding;
 
 @property (nonatomic,assign,readonly) FHPropertyObjectEncodingType objectTypeEncoding;
@@ -58,6 +61,10 @@ typedef NS_ENUM(NSInteger,FHPropertyObjectEncodingType) {
 @property (nonatomic,assign,readonly) Class cls;
 
 @property (nonatomic,assign,readonly) Class superClass;
+
+@property (nonatomic,copy,readonly) NSArray<NSString *> *propertys;
+
+@property (nonatomic,copy,readonly) NSArray<NSString *> *superClassPropertys;
 
 @property (nonatomic,copy,readonly) NSArray<NSString *> *protocols;
 
