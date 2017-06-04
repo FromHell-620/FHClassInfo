@@ -80,10 +80,17 @@ FHPropertyObjectEncodingType FHPropertyObjectEncodingTypeWithType(const char *ty
             objc_property_attribute_t property_attribute = property_attributes[i];
             switch (property_attribute.name[0]) {
                 case 'T': {
+                    _type = [NSString stringWithUTF8String:property_attribute.value];
                     _typeEncoding = FHPropertyEncodingTypeWithType(property_attribute.value);
                     if (_typeEncoding == FHPropertyEncodingTypeObject) {
                         _isEncodingTypeObject = YES;
                         _objectTypeEncoding = FHPropertyObjectEncodingTypeWithType(property_attribute.value);
+                        const char *value = property_attribute.value;
+                        char *class_name = calloc(strlen(value)-2, sizeof(char));
+                        memcpy(class_name, value+2, strlen(value)-3);
+                        class_name[strlen(value)-3] = '\0';
+                        _cls = objc_getClass(class_name);
+                        free(class_name);
                     }
                 } break;
                 
@@ -106,7 +113,7 @@ FHPropertyObjectEncodingType FHPropertyObjectEncodingTypeWithType(const char *ty
         free(property_attributes);
     }
     if (_getter == nil) _getter = sel_registerName(_name.UTF8String);
-    if (_setter == nil) _setter = sel_registerName([NSString stringWithFormat:@"set%@%@:",[[_name substringToIndex:1] uppercaseString],[_name substringFromIndex:1]].UTF8String);
+    if (_setter == nil&&_typeEncoding != FHPropertyEncodingTypeReadOnly) _setter = sel_registerName([NSString stringWithFormat:@"set%@%@:",[[_name substringToIndex:1] uppercaseString],[_name substringFromIndex:1]].UTF8String);
     
     return self;
 }

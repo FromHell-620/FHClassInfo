@@ -46,13 +46,15 @@ typedef NS_ENUM(NSInteger,FHPropertyObjectEncodingType) {
 
 @property (nonatomic,assign,readonly) BOOL isEncodingTypeObject;
 
+@property (nonatomic,assign,readonly,nullable) Class cls;
+
 @property (nonatomic,assign,readonly) FHPropertyEncodingType typeEncoding;
 
 @property (nonatomic,assign,readonly) FHPropertyObjectEncodingType objectTypeEncoding;
 
 @property (nonatomic,assign,readonly) SEL getter;
 
-@property (nonatomic,assign,readonly) SEL setter;
+@property (nonatomic,assign,readonly,nullable) SEL setter;
 
 - (instancetype)initWithProperty:(objc_property_t)propertyNS_DESIGNATED_INITIALIZER;
 
