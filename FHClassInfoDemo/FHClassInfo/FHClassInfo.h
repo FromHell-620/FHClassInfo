@@ -19,11 +19,13 @@ typedef NS_ENUM(NSInteger,FHPropertyEncodingType) {
     FHPropertyEncodingTypeFloat,
     FHPropertyEncodingTypeDouble,
     FHPropertyEncodingTypeCString,
-    FHPropertyEncodingTypeObject
+    FHPropertyEncodingTypeObject,
+    FHPropertyEncodingTypeReadOnly = 0xFF-1
 };
 
 typedef NS_ENUM(NSInteger,FHPropertyObjectEncodingType) {
-    FHPropertyObjectEncodingTypeNonsupport = 0xFF,
+    FHPropertyObjectEncodingTypeUnkonw = 0xFF,
+    FHPropertyObjectEncodingTypeNonsupport,
     FHPropertyObjectEncodingTypeNSString,
     FHPropertyObjectEncodingTypeNSNumber,
     FHPropertyObjectEncodingTypeNSData,

@@ -10,7 +10,7 @@
 
 @interface Test : NSObject
 
-@property (nonatomic,assign) int age;
+@property (nonatomic,assign,readonly) int age;
 
 @property (nonatomic,assign) NSInteger age_integer;
 
