@@ -28,6 +28,10 @@
 
 @implementation FHClassInfo
 
+@synthesize propertys = _propertys;
+@synthesize superClassPropertys = _superClassPropertys;
+@synthesize protocols = _protocols;
+
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"this method should receive a class object" userInfo:nil];
     return [self initWithClass:nil];
@@ -39,11 +43,30 @@
     if (self) {
         _cls = cls;
         _superClass = class_getSuperclass(cls);
-        _propertys = [self propertyListWithClass:cls];
-        _superClassPropertys = [self propertyListWithClass:_superClass];
-        _protocols = [self protocolListWithClass:cls];
+        
     }
     return self;
+}
+
+- (NSArray<NSString *> *)propertys {
+    if (!_propertys) {
+        _propertys = [self propertyListWithClass:self.cls];
+    }
+    return _propertys;
+}
+
+- (NSArray<NSString *> *)superClassPropertys {
+    if (!_superClassPropertys) {
+        _superClassPropertys = [self protocolListWithClass:self.superClass];
+    }
+    return _superClassPropertys;
+}
+
+- (NSArray<NSString *> *)protocols {
+    if (!_protocols) {
+        _protocols = [self protocolListWithClass:self.cls];
+    }
+    return _protocols;
 }
 
 - (NSArray<NSString *> *)propertyListWithClass:(Class)cls {
@@ -75,7 +98,22 @@
 }
 
 + (instancetype)infoWithClass:(Class)cls {
-    return [[self alloc] initWithClass:cls];
+    static CFMutableDictionaryRef classInfoCache = nil;
+    static dispatch_semaphore_t lock;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        classInfoCache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        lock = dispatch_semaphore_create(1);
+    });
+    FHClassInfo *classInfo = CFDictionaryGetValue(classInfoCache, (__bridge const void *)(cls));
+    if (classInfoCache == nil) {
+        dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+        classInfo = [[self alloc] initWithClass:cls];
+        NSParameterAssert(classInfo);
+        CFDictionarySetValue(classInfoCache, (__bridge const void *)(cls), (__bridge const void *)(classInfo));
+        dispatch_semaphore_signal(lock);
+    }
+    return classInfo;
 }
 
 + (instancetype)infoWithClassName:(NSString *)name {

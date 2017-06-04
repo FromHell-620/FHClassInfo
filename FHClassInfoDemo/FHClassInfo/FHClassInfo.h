@@ -68,6 +68,8 @@ typedef NS_ENUM(NSInteger,FHPropertyObjectEncodingType) {
 
 @property (nonatomic,copy,readonly) NSArray<NSString *> *protocols;
 
+@property (nonatomic,copy,readonly) NSDictionary<NSString *,FHPropertyInfo *> *propertysInfo;
+
 - (instancetype)initWithClass:(Class)cls NS_DESIGNATED_INITIALIZER;
 
 + (instancetype)infoWithClass:(Class)cls;
