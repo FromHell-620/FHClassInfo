@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93799081EE84775000F2F9C /* FHClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C93799071EE84775000F2F9C /* FHClassInfo.m */; };
 		C9E569CE1EE2F66E00029AAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E569CD1EE2F66E00029AAB /* main.m */; };
 		C9E569D11EE2F66E00029AAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E569D01EE2F66E00029AAB /* AppDelegate.m */; };
 		C9E569D41EE2F66E00029AAB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E569D31EE2F66E00029AAB /* ViewController.m */; };
 		C9E569D71EE2F66E00029AAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E569D51EE2F66E00029AAB /* Main.storyboard */; };
 		C9E569D91EE2F66E00029AAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E569D81EE2F66E00029AAB /* Assets.xcassets */; };
 		C9E569DC1EE2F66E00029AAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E569DA1EE2F66E00029AAB /* LaunchScreen.storyboard */; };
-		C9E569E61EE2F69A00029AAB /* FHClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E569E51EE2F69A00029AAB /* FHClassInfo.m */; };
 		C9E569E91EE2FAFA00029AAB /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E569E81EE2FAFA00029AAB /* Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C93799061EE84775000F2F9C /* FHClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHClassInfo.h; sourceTree = "<group>"; };
+		C93799071EE84775000F2F9C /* FHClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHClassInfo.m; sourceTree = "<group>"; };
 		C9E569C91EE2F66E00029AAB /* FHClassInfoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHClassInfoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E569CD1EE2F66E00029AAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9E569CF1EE2F66E00029AAB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,8 +30,6 @@
 		C9E569D81EE2F66E00029AAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E569DB1EE2F66E00029AAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9E569DD1EE2F66E00029AAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9E569E41EE2F69A00029AAB /* FHClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHClassInfo.h; sourceTree = "<group>"; };
-		C9E569E51EE2F69A00029AAB /* FHClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHClassInfo.m; sourceTree = "<group>"; };
 		C9E569E71EE2FAFA00029AAB /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
 		C9E569E81EE2FAFA00029AAB /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,8 +91,8 @@
 		C9E569E31EE2F68600029AAB /* FHClassInfo */ = {
 			isa = PBXGroup;
 			children = (
-				C9E569E41EE2F69A00029AAB /* FHClassInfo.h */,
-				C9E569E51EE2F69A00029AAB /* FHClassInfo.m */,
+				C93799061EE84775000F2F9C /* FHClassInfo.h */,
+				C93799071EE84775000F2F9C /* FHClassInfo.m */,
 			);
 			path = FHClassInfo;
 			sourceTree = "<group>";
@@ -169,7 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E569E91EE2FAFA00029AAB /* Test.m in Sources */,
-				C9E569E61EE2F69A00029AAB /* FHClassInfo.m in Sources */,
+				C93799081EE84775000F2F9C /* FHClassInfo.m in Sources */,
 				C9E569D41EE2F66E00029AAB /* ViewController.m in Sources */,
 				C9E569D11EE2F66E00029AAB /* AppDelegate.m in Sources */,
 				C9E569CE1EE2F66E00029AAB /* main.m in Sources */,
