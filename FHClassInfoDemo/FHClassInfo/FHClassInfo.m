@@ -126,6 +126,7 @@ FHPropertyObjectEncodingType FHPropertyObjectEncodingTypeWithType(const char *ty
 @synthesize propertysExceptReadonly = _propertysExceptReadonly;
 @synthesize superClassPropertys = _superClassPropertys;
 @synthesize protocols = _protocols;
+@synthesize superClassInfo = _superClassInfo;
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"this method should receive a class object" userInfo:nil];
@@ -220,6 +221,13 @@ FHPropertyObjectEncodingType FHPropertyObjectEncodingTypeWithType(const char *ty
     return [protocolNames copy];
 }
 
+- (FHClassInfo *)superClassInfo {
+    if (!_superClassInfo) {
+        _superClassInfo = [FHClassInfo infoWithClass:_superClass];
+    }
+    return _superClassInfo;
+}
+
 + (instancetype)infoWithClass:(Class)cls {
     static CFMutableDictionaryRef classInfoCache = nil;
     static dispatch_semaphore_t lock;
@@ -231,8 +239,7 @@ FHPropertyObjectEncodingType FHPropertyObjectEncodingTypeWithType(const char *ty
     FHClassInfo *classInfo = CFDictionaryGetValue(classInfoCache, (__bridge const void *)(cls));
     if (classInfo == nil) {
         dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
-        classInfo = [[self alloc] initWithClass:cls];
-        NSParameterAssert(classInfo);
+        if (classInfo == nil)   classInfo = [[self alloc] initWithClass:cls];
         CFDictionarySetValue(classInfoCache, (__bridge const void *)(cls), (__bridge const void *)(classInfo));
         dispatch_semaphore_signal(lock);
     }
